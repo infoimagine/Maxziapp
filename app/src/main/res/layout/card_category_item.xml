@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardview1"
+    card_view:contentPadding="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    card_view:cardElevation="5dp">
+
+    <LinearLayout
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:background="#e7e7e7">
+
+        <com.android.volley.toolbox.NetworkImageView
+            android:id="@+id/VolleyImageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher"/>
+
+        <LinearLayout
+            android:background="#9c1d1d1d"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="#fff"
+                android:text="JSon Image Name"
+                android:id="@+id/ImageNameTextView"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

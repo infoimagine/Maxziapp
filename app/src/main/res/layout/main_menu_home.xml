@@ -1,0 +1,70 @@
+<LinearLayout android:id="@+id/main_menu"
+    android:background="@color/colorPrimary"
+    android:weightSum="2"
+    android:layout_marginBottom="10dp"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:id="@+id/market_layout"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_marginBottom="10dp"
+            android:padding="5dp"
+            android:layout_gravity="center"
+            android:layout_width="@dimen/home_image_width"
+            android:src="@drawable/market"
+            android:layout_height="@dimen/home_image_height" />
+
+        <TextView
+            android:textColor="#fff"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/trajanfont"
+            android:textSize="20sp"
+            android:layout_gravity="center"
+            android:textAllCaps="true"
+            android:layout_width="wrap_content"
+            android:text="Market"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/eats_layout"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_marginBottom="10dp"
+            android:padding="5dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_width="@dimen/home_image_width"
+            android:src="@drawable/eats"
+            android:layout_height="@dimen/home_image_height" />
+
+        <TextView
+            android:textColor="#fff"
+            android:layout_margin="10dp"
+            android:textSize="20sp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/trajanfont"
+            android:layout_width="wrap_content"
+            android:text="Eats"
+            android:textAllCaps="true"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

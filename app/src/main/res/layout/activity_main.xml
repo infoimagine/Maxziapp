@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.zingbytes.maxziapp.activity.Home"
+    tools:showIn="@layout/app_bar_main">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.Home">
+
+
+        <AutoCompleteTextView
+            android:fontFamily="@font/trajanfont"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:drawablePadding="20dp"
+            android:textSize="15sp"
+            android:drawableLeft="@drawable/ic_search"
+            android:id="@+id/autocompletetextview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:hint="what are you looking for..."
+            android:inputType="text"
+            android:padding="2dp"
+            android:background="@android:color/transparent"
+            android:ems="10"/>
+        <requestFocus/>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_margin="10dp"
+            android:scrollbars="vertical"
+            android:layout_below="@id/autocompletetextview"
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
