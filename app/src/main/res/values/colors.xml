@@ -3,4 +3,31 @@
     <color name="colorPrimary">#404040</color>
     <color name="colorPrimaryDark">#73ad01</color>
     <color name="colorAccent">#f4f4f4</color>
+
+
+    <color name="button_color">#00134B</color>
+    <color name="ripple_effect_color">#1941B8</color>
+
+
+    <color name="green">#32CD32</color>
+    <color name="gray">#808080</color>
+    <color name="gray_300">#E0E0E0</color>
+    <color name="background_gray">#EBEBF1</color>
+    <color name="darker_gray">#aaa</color>
+
+    <color name="white">#fff</color>
+    <color name="black">#000000</color>
+    <color name="blue">#019AFF</color>
+    <color name="red">#ff00</color>
+    <color name="grey">#9A9A9A</color>
+    <color name="grey_black">#545454</color>
+    <color name="window_background_color">#F2F2F2</color>
+
+    <color name="light_white">#fcfcfc</color>
+    <color name="grey_200">#EEEEEE</color>
+    <color name="colorPrimaryWhite">#3f66d9</color>
+
+
+
+
 </resources>

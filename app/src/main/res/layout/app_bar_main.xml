@@ -19,16 +19,16 @@
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
-            <TextView
+             <TextView
                 android:fontFamily="@font/trajanfont"
                 android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
-                android:text=""
+                android:text="MAXZI THE GOOD FOOD SHOP"
                 android:textSize="12sp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_gravity="center"
-                android:id="@+id/toolbar_title" />
+               android:id="@+id/toolbar_title"/>
 
         </android.support.v7.widget.Toolbar>
 

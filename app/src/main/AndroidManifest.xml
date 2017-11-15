@@ -12,8 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
-            android:name=".SplashScreen"
+            android:name=".activity.SplashScreen"
             android:configChanges="orientation|screenSize"
             android:label="@string/app_name"
             android:launchMode="singleInstance"
@@ -24,15 +25,38 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
+            android:configChanges="orientation|screenSize"
+            android:launchMode="singleInstance"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".activity.Home"
+            android:configChanges="orientation|screenSize"
+            android:launchMode="singleInstance"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity android:name=".activity.SignIn"
             android:configChanges="orientation|screenSize"
             android:launchMode="singleInstance"
             android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".activity.Home"
+
+        <activity
             android:configChanges="orientation|screenSize"
             android:launchMode="singleInstance"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:name=".activity.SignUp"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".activity.SignIn"/>
+
+        <activity
+            android:configChanges="orientation|screenSize"
+            android:launchMode="singleInstance"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:name=".activity.Forgotpassword"
+            android:parentActivityName=".activity.SignIn"/>
+
     </application>
 
 </manifest>

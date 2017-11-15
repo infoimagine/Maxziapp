@@ -33,6 +33,11 @@
             android:icon="@drawable/contacts"
             android:title="Contact US" />
 
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/ic_logout"
+            android:title="Log Out" />
+
     </group>
 
 </menu>

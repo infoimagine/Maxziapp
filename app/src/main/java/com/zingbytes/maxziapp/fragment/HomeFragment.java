@@ -3,6 +3,8 @@ package com.zingbytes.maxziapp.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,7 +61,11 @@ public class HomeFragment extends Fragment {
             }
         });
 
+
         return view;
+
+
+
     }
 
 }

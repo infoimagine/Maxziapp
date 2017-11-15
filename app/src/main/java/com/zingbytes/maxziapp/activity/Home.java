@@ -1,10 +1,7 @@
 package com.zingbytes.maxziapp.activity;
 
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.graphics.Color;
-import android.support.annotation.NonNull;
+import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
@@ -12,17 +9,12 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,12 +23,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-import com.zingbytes.maxziapp.MainActivity;
 import com.zingbytes.maxziapp.R;
 import com.zingbytes.maxziapp.adapter.AllFoodItemAdapter;
 import com.zingbytes.maxziapp.fragment.Eats;
 import com.zingbytes.maxziapp.fragment.HomeFragment;
 import com.zingbytes.maxziapp.fragment.Market;
+import com.zingbytes.maxziapp.fragment.Profile;
 import com.zingbytes.maxziapp.model.AllFoodItem;
 import com.zingbytes.maxziapp.model.Category;
 
@@ -58,6 +50,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     ArrayList<AllFoodItem> mSuggestionArrayList;
     AutoCompleteTextView mAutoCompleteTextView;
     AllFoodItem allFoodItem;
+    Toolbar toolbar;
     AllFoodItemAdapter allFoodItemAdapter;
 
     @Override
@@ -65,8 +58,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar_title = (TextView) findViewById(R.id.toolbar_title);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -133,32 +125,57 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         if (id == R.id.home)
         {
 
-            Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
+            mAutoCompleteTextView.setVisibility(View.VISIBLE);
+            displaySelectedScreen(R.id.nav_menu1);
+            Intent intent = new Intent(Home.this,Home.class);
+            startActivity(intent);
+            //Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
         }
         else if (id == R.id.tracking)
         {
 
             Toast.makeText(this, "tracks", Toast.LENGTH_SHORT).show();
 
-        } else if (id == R.id.coins)
+        }
+        else if (id == R.id.coins)
         {
 
             Toast.makeText(this, "coins", Toast.LENGTH_SHORT).show();
 
-        } else if (id == R.id.order)
+        }
+        else if (id == R.id.order)
         {
 
             Toast.makeText(this, "order", Toast.LENGTH_SHORT).show();
 
-        } else if (id == R.id.account)
+        }
+        else if (id == R.id.account)
         {
 
-            Toast.makeText(this, "account", Toast.LENGTH_SHORT).show();
+            mAutoCompleteTextView.setVisibility(View.GONE);
+            Fragment fragment = new Profile();
+            android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.content_frame, fragment);
+            ft.commit();
+            //Toast.makeText(this, "account", Toast.LENGTH_SHORT).show();
 
-        } else if (id == R.id.contact)
+        }
+        else if (id == R.id.contact)
         {
 
             Toast.makeText(this, "Contact", Toast.LENGTH_SHORT).show();
+
+
+        }
+
+        else if (id == R.id.logout)
+        {
+
+            //Toast.makeText(this, "Contact", Toast.LENGTH_SHORT).show();
+            displaySelectedScreen(R.id.nav_menu1);
+            Intent intent = new Intent(Home.this,SignIn.class);
+            startActivity(intent);
+            finish();
 
         }
 
@@ -177,12 +194,12 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                 fragment = new HomeFragment();
                 break;
             case R.id.nav_menu2:
+                toolbar.setTitle("MARKET");
                 fragment = new Market();
-                toolbar_title.setText("MARKET");
                 break;
             case R.id.nav_menu3:
+                toolbar.setTitle("EATS");
                 fragment = new Eats();
-                toolbar_title.setText("EATS");
                 break;
         }
 

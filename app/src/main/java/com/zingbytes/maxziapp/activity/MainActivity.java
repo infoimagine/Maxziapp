@@ -1,9 +1,7 @@
-package com.zingbytes.maxziapp;
+package com.zingbytes.maxziapp.activity;
 
 ;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -18,7 +16,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
 
@@ -27,6 +24,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.zingbytes.maxziapp.R;
 import com.zingbytes.maxziapp.adapter.AllFoodItemAdapter;
 import com.zingbytes.maxziapp.adapter.CategoryAdapter;
 import com.zingbytes.maxziapp.model.AllFoodItem;
@@ -61,7 +59,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     AutoCompleteTextView mAutoCompleteTextView;
     AllFoodItem allFoodItem;
     AllFoodItemAdapter allFoodItemAdapter;
-
 
 
     @Override

@@ -1,0 +1,153 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/colorPrimary"
+    android:layout_height="match_parent"
+    tools:context="com.zingbytes.maxziapp.fragment.Profile">
+
+    <ScrollView
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="120dp"
+            android:padding="5dp"
+            android:background="@drawable/profile_border"
+            android:layout_margin="20dp"
+            android:src="@drawable/profile"
+            android:layout_height="120dp" />
+
+        <TextView
+            android:id="@+id/fullname"
+            android:layout_margin="3dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"
+            android:padding="5dp"
+            android:textSize="15sp"
+            android:layout_width="wrap_content"
+            android:text="JHON DEO"
+            android:fontFamily="@font/trajanfont"
+            android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/mobile"
+                android:layout_margin="3dp"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:padding="5dp"
+                android:textSize="13sp"
+                android:layout_width="wrap_content"
+                android:text="+971 4 3386 304"
+                android:layout_height="30dp" />
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_margin="3dp"
+                android:textColor="#fff"
+                android:padding="3dp"
+                android:textSize="15sp"
+                android:layout_width="wrap_content"
+                android:text="shop@maxz.ae"
+                android:layout_height="30dp" />
+
+
+        <LinearLayout
+            android:id="@+id/DeliveryAddressLayout"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:padding="5dp"
+                android:textColor="#fff"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:text="Delivery Address"
+                android:layout_height="wrap_content" />
+
+            <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+            <View
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="#c6c6c6"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+
+            <ImageView
+                android:id="@+id/addAddressDetail"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:tint="#fff"
+                android:layout_width="wrap_content"
+                android:src="@android:drawable/ic_input_add"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/paymentLayout"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_marginTop="20dp"
+                    android:padding="5dp"
+                    android:textColor="#fff"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:text="Payment Detail"
+                    android:layout_height="wrap_content" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_view_payment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+
+                <View
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#c6c6c6"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
+
+                <ImageView
+                    android:id="@+id/addPaymentDetail"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
+                    android:tint="#fff"
+                    android:layout_width="wrap_content"
+                    android:src="@android:drawable/ic_input_add"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+</LinearLayout>
