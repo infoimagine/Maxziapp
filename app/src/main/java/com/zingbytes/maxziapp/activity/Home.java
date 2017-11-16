@@ -1,7 +1,10 @@
 package com.zingbytes.maxziapp.activity;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
@@ -41,9 +44,9 @@ import java.util.List;
 
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
-    TextView toolbar_title;
     List<Category> ListOfAllFoodItemAdapter;
-    String HTTP_JSON_URL = "http://androidblog.esy.es/ImageJsonData.php";
+    boolean doubleBackToExitPressedOnce = false;
+    String HTTP_JSON_URL = "https://api.myjson.com/bins/1cb183";
     String Image_Name_JSON = "image_title";
     JsonArrayRequest AllfoodItemJSonArray;
     RequestQueue requestQueueAllfoodItem;
@@ -82,15 +85,38 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START))
-        {
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+        } else if (isTaskRoot()) {
+
+                if (getSupportFragmentManager().getBackStackEntryCount() > 0)
+                {
+                    boolean done = getSupportFragmentManager().popBackStackImmediate();
+                }
+             else
+                {
+                new AlertDialog.Builder(this)
+                        .setIcon(R.drawable.ic_dialog_alert)
+                        .setTitle("Close")
+                        .setMessage("Do you want to close maxzi app ? ")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //  mediaPlayer.stop();
+                                //  status=false;
+                                finish();
+                            }
+
+                        })
+                        .setNegativeButton("No", null)
+                        .show();
+
+                }
         }
         else
         {
-            super.onBackPressed();
+                super.onBackPressed();
         }
-
     }
 
     @Override
@@ -156,6 +182,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             Fragment fragment = new Profile();
             android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.content_frame, fragment);
+            ft.addToBackStack(null);
             ft.commit();
             //Toast.makeText(this, "account", Toast.LENGTH_SHORT).show();
 
@@ -207,6 +234,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         if (fragment != null) {
             android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.content_frame, fragment);
+            ft.addToBackStack(null);
             ft.commit();
         }
 
@@ -255,5 +283,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         mAutoCompleteTextView.setAdapter(allFoodItemAdapter);//
 
     }
+
+
 
 }

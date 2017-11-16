@@ -3,7 +3,7 @@ package com.zingbytes.maxziapp.fragment;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,21 +14,20 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.zingbytes.maxziapp.R;
 
-public class Profile extends Fragment implements View.OnClickListener {
+import net.skoumal.fragmentback.BackFragment;
 
-    public static Profile thisfragmentProfile = null;
-    Context mContext;
+public class Profile extends Fragment implements View.OnClickListener, BackFragment {
+
     ImageView addAddressDetail,addPaymentDetail;
-
-
+Fragment fragment=null;
     //Dialog
-    private Dialog dialogAddMoney;
+    private Dialog dialogAddAddress;
     private Button btnCancel, btnSubmit;
-    private EditText edtEnterAmount;
-
+    private EditText edtEnterAddress;
 
     public Profile() {
         // Required empty public constructor
@@ -44,7 +43,6 @@ public class Profile extends Fragment implements View.OnClickListener {
         addPaymentDetail = (ImageView)view.findViewById(R.id.addPaymentDetail);
 
 
-
         addAddressDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,7 +55,7 @@ public class Profile extends Fragment implements View.OnClickListener {
             @Override
             public void onClick(View view) {
 
-                openDialogAddAddress();
+                openDialogPaymwent();
 
 
             }
@@ -67,57 +65,61 @@ public class Profile extends Fragment implements View.OnClickListener {
     }
 
     private void openDialogAddAddress() {
-        View lstGroupView = getActivity().getLayoutInflater().inflate(R.layout.dailog_add_address, null);
-        dialogAddMoney = new Dialog(getActivity(), R.style.MaterialDialogSheet);
-        dialogAddMoney.setContentView(lstGroupView);
-        dialogAddMoney.setCancelable(true);
-        dialogAddMoney.getWindow().setGravity(Gravity.CENTER);
-        dialogAddMoney.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 
-        edtEnterAmount = (EditText) dialogAddMoney.findViewById(R.id.edtEnterAmount);
-        btnCancel = (Button) dialogAddMoney.findViewById(R.id.btnCancel);
-        btnSubmit = (Button) dialogAddMoney.findViewById(R.id.btnSubmit);
+        View lstGroupView = getActivity().getLayoutInflater().inflate(R.layout.dailog_add_address, null);
+        dialogAddAddress = new Dialog(getActivity(), R.style.MaterialDialogSheet);
+        dialogAddAddress.setContentView(lstGroupView);
+        dialogAddAddress.setCancelable(true);
+        dialogAddAddress.getWindow().setGravity(Gravity.CENTER);
+        dialogAddAddress.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        edtEnterAddress = (EditText) dialogAddAddress.findViewById(R.id.edtEnterAddress);
+
+        btnCancel = (Button) dialogAddAddress.findViewById(R.id.btnCancel);
+        btnSubmit = (Button) dialogAddAddress.findViewById(R.id.btnAdd);
+
         btnCancel.setOnClickListener(this);
         btnSubmit.setOnClickListener(this);
 
-        dialogAddMoney.show();
+        dialogAddAddress.show();
     }
-
 
     private void openDialogPaymwent() {
-        View lstGroupView = getActivity().getLayoutInflater().inflate(R.layout.dailog_add_address, null);
-        dialogAddMoney = new Dialog(getActivity(), R.style.MaterialDialogSheet);
-        dialogAddMoney.setContentView(lstGroupView);
-        dialogAddMoney.setCancelable(true);
-        dialogAddMoney.getWindow().setGravity(Gravity.CENTER);
-        dialogAddMoney.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 
-        edtEnterAmount = (EditText) dialogAddMoney.findViewById(R.id.edtEnterAmount);
-        btnCancel = (Button) dialogAddMoney.findViewById(R.id.btnCancel);
-        btnSubmit = (Button) dialogAddMoney.findViewById(R.id.btnSubmit);
-        btnCancel.setOnClickListener(this);
-        btnSubmit.setOnClickListener(this);
 
-        dialogAddMoney.show();
     }
-
-
 
     @Override
     public void onClick(View view) {
 
         switch (view.getId()) {
-
-            case R.id.btnSubmit:
-                        dialogAddMoney.dismiss();
-                        String AMOUNT = edtEnterAmount.getText().toString().trim();
-                        Intent intent = new Intent(mContext, Profile.class);
-                        getActivity().startActivity(intent);
+            case R.id.btnAdd:
+                        String address = edtEnterAddress.getText().toString().trim();
+                        Toast.makeText(getActivity(), address, Toast.LENGTH_SHORT).show();
+                        dialogAddAddress.dismiss();
                          break;
+
             case R.id.btnCancel:
-                dialogAddMoney.dismiss();
+                dialogAddAddress.dismiss();
                 break;
+
         }
 
+    }
+
+    @Override
+    public boolean onBackPressed() {
+        Toast.makeText(getActivity(), "back press", Toast.LENGTH_SHORT).show();
+        getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container, fragment)
+                .addToBackStack(null)
+                .commit();
+        return false;
+    }
+
+    @Override
+    public int getBackPriority() {
+        return 0;
     }
 }

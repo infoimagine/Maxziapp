@@ -2,6 +2,7 @@ package com.zingbytes.maxziapp.fragment;
 
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -12,11 +13,13 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 import com.zingbytes.maxziapp.R;
 
+import net.skoumal.fragmentback.BackFragment;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements BackFragment {
 
     Fragment fragment = null;
     LinearLayout marketLayout,eatsLayout;
@@ -56,6 +59,7 @@ public class HomeFragment extends Fragment {
                 Toast.makeText(getActivity(), "eats", Toast.LENGTH_SHORT).show();
                 fragment = new Eats();
                 android.support.v4.app.FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                ft.addToBackStack(null);
                 ft.replace(R.id.content_frame, fragment);
                 ft.commit();
             }
@@ -68,4 +72,19 @@ public class HomeFragment extends Fragment {
 
     }
 
+    @Override
+    public boolean onBackPressed() {
+        getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container, fragment)
+                .addToBackStack(null)
+                .commit();
+        return true;
+    }
+
+
+    @Override
+    public int getBackPriority() {
+        return 0;
+    }
 }

@@ -1,44 +1,50 @@
 package com.zingbytes.maxziapp.fragment;
 
 
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.zingbytes.maxziapp.R;
 
 import net.skoumal.fragmentback.BackFragment;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class Eats extends Fragment implements BackFragment {
+public class SubCategory extends Fragment implements BackFragment {
 
-
+    View view1;
     Fragment fragment=null;
-    public Eats() {
-        // Required empty public constructor
-    }
 
+
+    public SubCategory() {
+
+
+    }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_eats, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        view1 = inflater.inflate(R.layout.fragment_sub_category, container, false);
+
+        return view1;
+
     }
+
 
     @Override
     public boolean onBackPressed() {
-        Fragment fragment=new HomeFragment();
+        Toast.makeText(getActivity(), "back press", Toast.LENGTH_SHORT).show();
         getActivity().getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.container, fragment)
                 .addToBackStack(null)
                 .commit();
-        return true;
+        return false;
     }
 
     @Override
